@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "label": "Armeija",
+      "icon": "🎖"
+    },
+    {
+      "label": "Asianajajat",
+      "icon": "§"
+    }
+  ],
+  "jokes": [
+    {
+      "id": 0,
+      "cat": "Armeija",
+      "txt": "Armeijassa:\n-Kuka siellä?\n-Minähän olen vastannut jo kaksi kertaa! Ettekö tunne ohjesääntöä?\n-Kyllä tunnen. Minun tulee huutaa kolme kertaa \"kuka siellä\" ja sitten ampua."
+    },
+    {
+      "id": 1,
+      "cat": "Asianajajat",
+      "txt": "Miksi hait eivät hyökkää asianajajien kimppuun?\n-Kohteliaisuudesta kollegoita kohtaan"
+    }
+  ]
+}
