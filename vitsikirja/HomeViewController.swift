@@ -31,7 +31,7 @@ class HomeViewController: UITableViewController {
 
 extension HomeViewController: ViewConstructor {
     func setupViews() {
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .label
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         dataSource = HomeViewDataSource(tableView: tableView, vmController: vmController, showCategory: showCategory)

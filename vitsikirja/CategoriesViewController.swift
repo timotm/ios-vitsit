@@ -23,8 +23,7 @@ class CategoriesViewController: UIViewController {
 
 extension CategoriesViewController: ViewConstructor {
     func setupViews() {
-        view.backgroundColor = UIColor.white
-
+        view.backgroundColor = .systemBackground
         let scrollView = UIScrollView().then {
             $0.alwaysBounceVertical = true
             $0.contentInsetAdjustmentBehavior = .always

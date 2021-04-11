@@ -15,7 +15,7 @@ class CategoryCell: UITableViewCell {
     let rightLabel = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(systemName: "chevron.forward")
-        $0.tintColor =  .black
+        $0.tintColor = .label
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

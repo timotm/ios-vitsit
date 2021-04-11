@@ -42,7 +42,7 @@ extension DetailViewController: ViewConstructor {
     func setupViews() {
         pageController.dataSource = self
         pageController.delegate = self
-        pageController.view.backgroundColor = .white
+        pageController.view.backgroundColor = .systemBackground
         addChild(pageController)
         pageController.didMove(toParent: self)
         view.addSubview(pageController.view)
