@@ -51,8 +51,15 @@ enum JokeSection: Int, CaseIterable {
 class JokeViewModelController {
     private var jokeBundle: JokeBundle?
     private var categories: [(label: String, icon: String)] = []
-    private var favorites: [Int] = []
     private var disabledCategories: [String] = []
+    private var enabledCategories: [(label: String, icon: String)] {
+        get {
+            categories.filter {
+                cat in disabledCategories.firstIndex(of: cat.label) == nil
+            }
+        }
+    }
+    private var favorites: [Int] = []
     private var jokes: [(id: Int, text: String, cat: String)] = []
     private static let favoriteDefaultsKey = "favorites"
     private static let disabledCatDefaultsKey = "disabledCategories"
@@ -60,7 +67,7 @@ class JokeViewModelController {
     var invalidator: (() -> ())? = nil
 
     var categoryCount: [Int] {
-        get { return [1, 1, categories.count - disabledCategories.count] }
+        get { return [1, 1, enabledCategories.count] }
     }
 
     let sections = JokeSection.allCases.count
@@ -113,10 +120,7 @@ class JokeViewModelController {
         case .All:
             return JokeCategory(category: "Kaikki", icon: "∞", jokes: jokes.map(augmentWithFavorite))
         case .ByCategory:
-            let cats = categories.filter({
-                cat in disabledCategories.firstIndex(of: cat.label) == nil
-            })
-            let category = cats[indexPath.row]
+            let category = enabledCategories[indexPath.row]
             return JokeCategory(category: category.label, icon: category.icon, jokes:jokes.filter({ $0.cat == category.label }).map(augmentWithFavorite))
         default:
             fatalError("unknown enum 😱" )
