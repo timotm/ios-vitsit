@@ -17,13 +17,13 @@ class CategoryCell: UITableViewCell {
         $0.image = UIImage(systemName: "chevron.forward")
         $0.tintColor =  .black
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupViewConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,7 +35,7 @@ extension CategoryCell: ViewConstructor {
         contentView.addSubview(categoryLabel)
         contentView.addSubview(rightLabel)
     }
-    
+
     func setupViewConstraints() {
         categoryIcon.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(contentView.layoutMarginsGuide).inset(10).labeled("categoryIconVertical")
@@ -52,3 +52,4 @@ extension CategoryCell: ViewConstructor {
         }
     }
 }
+

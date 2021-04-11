@@ -1,19 +1,19 @@
 import UIKit
 
 class CategoriesViewController: UIViewController {
-    
+
     let vmController: JokeViewModelController
-    
+
     init(vmController: JokeViewModelController) {
         self.vmController = vmController
         super.init(nibName: nil, bundle: nil)
         title = "Asetukset"
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -26,10 +26,10 @@ extension CategoriesViewController: ViewConstructor {
         view.backgroundColor = UIColor.white
 
         let scrollView = UIScrollView().then {
-                        $0.alwaysBounceVertical = true
+            $0.alwaysBounceVertical = true
             $0.contentInsetAdjustmentBehavior = .always
         }
-        
+
         let container = UIView()
 
         let stackView = UIStackView().then {
@@ -57,12 +57,12 @@ extension CategoriesViewController: ViewConstructor {
 
             stackView.addArrangedSubview(UIStackView(arrangedSubviews: [label, toggle]))
         }
-        
-        
+
+
         container.addSubview(stackView)
         scrollView.addSubview(container)
         view.addSubview(scrollView)
-        
+
         scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -77,9 +77,8 @@ extension CategoriesViewController: ViewConstructor {
         }
 
     }
-    
-    func setupViewConstraints() {        
-    }
-    
-}
 
+    func setupViewConstraints() {
+    }
+
+}

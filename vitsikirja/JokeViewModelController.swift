@@ -30,14 +30,14 @@ extension String {
         let font = UIFont.systemFont(ofSize: 28)
         let stringAttributes = [NSAttributedString.Key.font: font]
         let imageSize = nsString.size(withAttributes: stringAttributes)
-        
+
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
         UIColor.clear.set()
         UIRectFill(CGRect(origin: CGPoint(), size: imageSize))
         nsString.draw(at: CGPoint.zero, withAttributes: stringAttributes)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return image ?? UIImage()
     }
 }
@@ -122,10 +122,10 @@ class JokeViewModelController {
             fatalError("unknown enum 😱" )
         }
     }
-    
+
     func load() {
         guard let path = Bundle.main.url(forResource: "vitsit", withExtension: "json") else { return }
-        
+
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 let data = try Data(contentsOf: path)
@@ -145,3 +145,4 @@ class JokeViewModelController {
         }
     }
 }
+

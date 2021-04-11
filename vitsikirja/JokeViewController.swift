@@ -4,7 +4,7 @@ class JokeViewController: UIViewController {
     let textView: UITextView
     let index: Int
     let favorited: Bool
-    
+
     init(joke: String, index: Int, favorite: Bool) {
         textView = UITextView().then {
             if let bodySerifDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).withDesign(.serif) {
@@ -19,23 +19,23 @@ class JokeViewController: UIViewController {
         setupViews()
         setupViewConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }
 
 extension JokeViewController: ViewConstructor {
     func setupViews() {
         view.addSubview(textView)
     }
-    
+
     func setupViewConstraints() {
         textView.snp.makeConstraints { (make) in
             make.edges.equalTo(view.layoutMarginsGuide).labeled("textViewAll")
         }
     }
-    
-    
+
+
 }
