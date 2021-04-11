@@ -118,7 +118,12 @@ class JokeViewModelController {
                                 jokes: favorites.compactMap({ favid in jokes.first(where: { j in j.id == favid }) })
                                     .map(augmentWithFavorite))
         case .All:
-            return JokeCategory(category: "Kaikki", icon: "∞", jokes: jokes.map(augmentWithFavorite))
+            return
+                JokeCategory(category: "Kaikki", icon: "∞", jokes: jokes.filter {
+                    (j) -> Bool in
+                    disabledCategories.firstIndex(of: j.cat) == nil
+                }
+                .map(augmentWithFavorite))
         case .ByCategory:
             let category = enabledCategories[indexPath.row]
             return JokeCategory(category: category.label, icon: category.icon, jokes:jokes.filter({ $0.cat == category.label }).map(augmentWithFavorite))
