@@ -42,7 +42,10 @@ extension HomeViewDataSource: UITableViewDataSource {
 
 extension HomeViewDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showCategory(vmController.getCategoryFor(indexPath: indexPath))
+        let cat = vmController.getCategoryFor(indexPath: indexPath)
+        if !cat.jokes.isEmpty {
+            showCategory(cat)
+        }
     }
 }
 
