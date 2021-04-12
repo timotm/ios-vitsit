@@ -10,9 +10,11 @@ class HomeViewDataSource: NSObject {
         self.showCategory = showCategory
         self.tableView = tableView
         super.init()
-        vmController.invalidator = reloadTableView
+        vmController.invalidator.append(reloadTableView)
         tableView.dataSource = self
         tableView.delegate = self
+
+        tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.reuseIdentifier)
     }
 
     func reloadTableView() {

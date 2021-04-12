@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF14A7542623757C003454C4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14A7532623757C003454C4 /* SearchViewController.swift */; };
+		DF14A7572624B761003454C4 /* SearchViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14A7562624B761003454C4 /* SearchViewDataSource.swift */; };
+		DF14A75A2624B80D003454C4 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14A7592624B80D003454C4 /* SearchResultCell.swift */; };
 		DF34BD0F2609072300AA6FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34BD0E2609072300AA6FFF /* AppDelegate.swift */; };
 		DF34BD132609072300AA6FFF /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34BD122609072300AA6FFF /* CategoriesViewController.swift */; };
 		DF34BD182609072500AA6FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF34BD172609072500AA6FFF /* Assets.xcassets */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF14A7532623757C003454C4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DF14A7562624B761003454C4 /* SearchViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewDataSource.swift; sourceTree = "<group>"; };
+		DF14A7592624B80D003454C4 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		DF34BD0B2609072300AA6FFF /* vitsikirja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vitsikirja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF34BD0E2609072300AA6FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF34BD122609072300AA6FFF /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -76,12 +82,15 @@
 				DF34BD44260BC52400AA6FFF /* DetailViewController.swift */,
 				DF34BD0E2609072300AA6FFF /* AppDelegate.swift */,
 				DF34BD41260A736C00AA6FFF /* HomeViewDataSource.swift */,
+				DF14A7562624B761003454C4 /* SearchViewDataSource.swift */,
 				DF34BD50260BD72000AA6FFF /* CategoryCell.swift */,
+				DF14A7592624B80D003454C4 /* SearchResultCell.swift */,
 				DF34BD54260BD87900AA6FFF /* JokeViewController.swift */,
 				DF34BD3E260A553E00AA6FFF /* JokeViewModelController.swift */,
 				DF34BD29260908B000AA6FFF /* HomeViewController.swift */,
 				DF34BD33260912F400AA6FFF /* ViewConstructor.swift */,
 				DF34BD26260907F600AA6FFF /* RootViewController.swift */,
+				DF14A7532623757C003454C4 /* SearchViewController.swift */,
 				DF34BD122609072300AA6FFF /* CategoriesViewController.swift */,
 				DF34BD172609072500AA6FFF /* Assets.xcassets */,
 				DF34BD1C2609072500AA6FFF /* Info.plist */,
@@ -167,7 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF34BD45260BC52400AA6FFF /* DetailViewController.swift in Sources */,
+				DF14A7572624B761003454C4 /* SearchViewDataSource.swift in Sources */,
+				DF14A7542623757C003454C4 /* SearchViewController.swift in Sources */,
 				DF34BD132609072300AA6FFF /* CategoriesViewController.swift in Sources */,
+				DF14A75A2624B80D003454C4 /* SearchResultCell.swift in Sources */,
 				DF34BD51260BD72000AA6FFF /* CategoryCell.swift in Sources */,
 				DF34BD0F2609072300AA6FFF /* AppDelegate.swift in Sources */,
 				DF34BD42260A736C00AA6FFF /* HomeViewDataSource.swift in Sources */,

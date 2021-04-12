@@ -7,11 +7,16 @@ class DetailViewController: UIViewController {
     let pageController: UIPageViewController
     var currentIndex: Int = 0
 
-    init(setFavorite: @escaping (Int, Bool)->(), jokes: [(id: Int, text: String, favorite: Bool)]) {
+    init(setFavorite: @escaping (Int, Bool)->(), jokes: [(id: Int, text: String, favorite: Bool)], startIndex: Int? = nil) {
         self.setFavorite = setFavorite
         self.jokes = jokes
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         super.init(nibName: nil, bundle: nil)
+
+        if let start = startIndex {
+            currentIndex = start
+        }
+
         setupViews()
         setupViewConstraints()
     }
@@ -46,7 +51,7 @@ extension DetailViewController: ViewConstructor {
         addChild(pageController)
         pageController.didMove(toParent: self)
         view.addSubview(pageController.view)
-        let initialVC = JokeViewController(joke: jokes[0].text, index: 0, favorite: jokes[0].favorite)
+        let initialVC = JokeViewController(joke: jokes[currentIndex].text, index: currentIndex, favorite: jokes[currentIndex].favorite)
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         renderFavoriteButton()
         updateTitle()
@@ -96,4 +101,3 @@ extension DetailViewController: UIPageViewControllerDelegate {
         updateTitle()
     }
 }
-

@@ -42,13 +42,14 @@ extension String {
     }
 }
 
-enum JokeSection: Int, CaseIterable {
-    case Favorites = 0
-    case All = 1
-    case ByCategory = 2
-}
 
 class JokeViewModelController {
+    private enum JokeSection: Int, CaseIterable {
+        case Favorites = 0
+        case All = 1
+        case ByCategory = 2
+    }
+
     private var jokeBundle: JokeBundle?
     private var categories: [(label: String, icon: String)] = []
     private var disabledCategories: [String] = []
@@ -63,8 +64,9 @@ class JokeViewModelController {
     private var jokes: [(id: Int, text: String, cat: String)] = []
     private static let favoriteDefaultsKey = "favorites"
     private static let disabledCatDefaultsKey = "disabledCategories"
+    private var searchResults: [(id: Int, excerpt: NSAttributedString, fullText: String, favorite: Bool)] = []
 
-    var invalidator: (() -> ())? = nil
+    var invalidator: [(() -> ())] = []
 
     var categoryCount: [Int] {
         get { return [1, 1, enabledCategories.count] }
@@ -99,6 +101,38 @@ class JokeViewModelController {
         }
     }
 
+    func setSearch(_ searchTerm: String?) {
+        guard let term = searchTerm else {
+            searchResults = []
+            return
+        }
+
+        searchResults = getCategoryFor(indexPath: IndexPath(row: 0, section: JokeSection.All.rawValue)).jokes.compactMap { (j) -> (id: Int, excerpt: NSAttributedString, fullText: String, favorite: Bool)? in
+            if let range = j.text.range(of: term, options: [.caseInsensitive, .diacriticInsensitive]) {
+                var s = range.lowerBound
+                var e = range.upperBound
+                let ellideStart = j.text.formIndex(&s, offsetBy: -20, limitedBy: j.text.startIndex)
+                let ellideEnd = j.text.formIndex(&e, offsetBy: 20, limitedBy: j.text.endIndex)
+
+                let excerpt = ((ellideStart ? "…" : "") + String(j.text[s..<e]) + (ellideEnd ? "…" : ""))
+                    .replacingOccurrences(of: "\n", with: " ")
+                let excerptAS = NSMutableAttributedString(string: excerpt, attributes:nil)
+                let matchRange = (excerptAS.string as NSString).range(of: term, options: [.caseInsensitive, .diacriticInsensitive])
+                excerptAS.addAttribute(.backgroundColor, value: UIColor.systemFill, range: matchRange)
+
+                return (j.id, excerptAS, j.text, j.favorite)
+            }
+            else {
+                return nil
+            }
+        }
+
+    }
+
+    func getSearchResults() -> [(id: Int, excerpt: NSAttributedString, fullText: String, favorite: Bool)] {
+        searchResults
+    }
+
     func setCategoryEnablement(index: Int, enabled: Bool) {
         if let oldIndex = disabledCategories.firstIndex(of: categories[index].label) {
             disabledCategories.remove(at:oldIndex)
@@ -108,7 +142,7 @@ class JokeViewModelController {
         }
         UserDefaults.standard.removeObject(forKey: JokeViewModelController.disabledCatDefaultsKey)
         UserDefaults.standard.set(disabledCategories, forKey: JokeViewModelController.disabledCatDefaultsKey)
-        invalidator?()
+        invalidator.forEach { $0() }
     }
 
     func getCategoryFor(indexPath: IndexPath) -> JokeCategory {

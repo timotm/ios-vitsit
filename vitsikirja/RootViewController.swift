@@ -16,13 +16,18 @@ class RootViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let homeViewController = HomeViewController(vmController: vmController)
-
         homeViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
 
-        let categoriesViewController = CategoriesViewController(vmController: vmController)
-        categoriesViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "slider.horizontal.3"), tag: 2)
+        let searchViewController = SearchViewController(vmController: vmController)
+        searchViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "magnifyingglass"), tag: 2)
 
-        viewControllers = [UINavigationController(rootViewController: homeViewController), UINavigationController(rootViewController: categoriesViewController)]
+        let categoriesViewController = CategoriesViewController(vmController: vmController)
+        categoriesViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "slider.horizontal.3"), tag: 3)
+
+
+        viewControllers = [UINavigationController(rootViewController: homeViewController),
+                           UINavigationController(rootViewController: searchViewController),
+                           UINavigationController(rootViewController: categoriesViewController)]
     }
 
 }

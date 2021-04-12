@@ -35,7 +35,7 @@ extension HomeViewController: ViewConstructor {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         dataSource = HomeViewDataSource(tableView: tableView, vmController: vmController, showCategory: showCategory)
-        tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.reuseIdentifier)
+        
     }
 
     func setupViewConstraints() {
