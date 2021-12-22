@@ -22,6 +22,10 @@ class HomeViewController: UITableViewController {
         setupViewConstraints()
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        dataSource?.reloadTableView()
+    }
+
     func showCategory(category: JokeCategory) {
         let detailViewController = DetailViewController(setFavorite: vmController.setFavorite, jokes: category.jokes)
         navigationController?.pushViewController(detailViewController, animated: true)

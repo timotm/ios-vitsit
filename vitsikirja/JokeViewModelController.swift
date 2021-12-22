@@ -28,7 +28,8 @@ extension String {
     func textToImage() -> UIImage {
         let nsString = (self as NSString)
         let font = UIFont.systemFont(ofSize: 28)
-        let stringAttributes = [NSAttributedString.Key.font: font]
+        let stringAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label,
+                                NSAttributedString.Key.font: font]
         let imageSize = nsString.size(withAttributes: stringAttributes)
 
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
